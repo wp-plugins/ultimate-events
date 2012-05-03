@@ -69,8 +69,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
 == Changelog == 
 > 1.1.0
 	- Changed position of update button relative to the display table to make it easier to see.
-	- Added cancelation notice to events, accessable via the edit event button. (THIS REQUIRES THE
-		PLUGIN TO BE DEACTIVATED AND REACTIVATED TO UPDATE THE TABLES!) 
+	- Added cancelation notice to events, accessable via the edit event button. 
 
 > 1.0 
 	- Added Copy function and ability to handle links for the location.
