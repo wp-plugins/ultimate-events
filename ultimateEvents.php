@@ -4,7 +4,7 @@ $version = "1.1.0";
 /*
 Plugin Name: Ultimate Events
 Description: A Plugin to manage people attending multiple events
-Version: 1.1.0;
+Version: 1.1.0
 Author: Sam "Tehsmash" Betts
 Author URI: http://www.code-smash.net
 License: GPL2
