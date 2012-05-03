@@ -1,8 +1,10 @@
 <?php
+global $version;
+$version = "1.1.0";
 /*
 Plugin Name: Ultimate Events
 Description: A Plugin to manage people attending multiple events
-Version: 1.0
+Version: 1.1.0;
 Author: Sam "Tehsmash" Betts
 Author URI: http://www.code-smash.net
 License: GPL2
@@ -28,7 +30,6 @@ include 'ultimateEvents_functions.php';
 
 /****************** Activation Stuff ******************/
 register_activation_hook(__FILE__,'ultievt_install'); 
-//register_deactivation_hook( __FILE__,'ultievt_remove');
 
 /****************** User Stuff ******************/
 function ultievt_display() {

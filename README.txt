@@ -1,6 +1,6 @@
 === Ultimate Events ===
 Plugin Name: Ultimate Events
-Version: 1.0
+Version: 1.1.0
 Contributors: tehsmash
 Author: Sam "Tehsmash" Betts
 Author URI: http://www.code-smash.net
@@ -67,6 +67,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
 
 == Changelog == 
+> 1.1.0
+	- Changed position of update button relative to the display table to make it easier to see.
+	- Added cancelation notice to events, accessable via the edit event button. (THIS REQUIRES THE
+		PLUGIN TO BE DEACTIVATED AND REACTIVATED TO UPDATE THE TABLES!) 
 
 > 1.0 
 	- Added Copy function and ability to handle links for the location.

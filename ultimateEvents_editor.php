@@ -26,14 +26,20 @@ if(isset($_POST['ultievt_hidden'])) {
 		$link = 0;
 	}
 	
+	if(isset($_POST['ultievt_evtcancel']) && $_POST['ultievt_evtcancel'] == 'yes') {
+		$cancel = 1;
+	} else {
+		$cancel = 0;
+	}
+	
 	if($_POST['ultievt_hidden'] == 'add') {
-		$wpdb->query("INSERT INTO $eventsTable (event_name, event_date, event_location, event_private, event_link) " . 
-						"VALUES ('$name', '$date', '$location', '$private', '$link')"); ?>
+		$wpdb->query("INSERT INTO $eventsTable (event_name, event_date, event_location, event_private, event_link, event_cancel) " . 
+						"VALUES ('$name', '$date', '$location', '$private', '$link', '$cancel')"); ?>
 		<div class="updated"><p><strong> Event Added! </strong></p></div>
 	<?php } else {
 		$id = $_POST['ultievt_hidden'];
 		$wpdb->query("UPDATE $eventsTable SET event_name='$name', event_date='$date', " .
-						"event_location='$location', event_private='$private', event_link='$link' WHERE event_id='$id'"); ?>
+						"event_location='$location', event_private='$private', event_link='$link', event_cancel='$cancel' WHERE event_id='$id'"); ?>
 		<div class="updated"><p><strong> Event Updated! </strong></p></div>
 	<?php }
 }
@@ -60,6 +66,7 @@ $events = $wpdb->get_results("SELECT * FROM $eventsTable WHERE DATE(event_date) 
 				<th> Event Date </th>
 				<th> Event Location </th>
 				<th> Private Event </th>
+				<th> Event Cancelled </th>
 				<th></th>
 			</tr>
 		</thead>
@@ -77,6 +84,13 @@ $events = $wpdb->get_results("SELECT * FROM $eventsTable WHERE DATE(event_date) 
 				</td>
 				<td style="height:30px"> 
 					<?php if($event->event_private) {
+						echo "Yes";
+					} else { 
+						echo "No";
+					} ?>
+				</td>
+				<td style="height:30px"> 
+					<?php if($event->event_cancel) {
 						echo "Yes";
 					} else { 
 						echo "No";
@@ -101,7 +115,7 @@ $events = $wpdb->get_results("SELECT * FROM $eventsTable WHERE DATE(event_date) 
 		<?php if($_GET['action'] == "add") { ?>
 			<h3> Add Event </h3> 
 			<input type="hidden" name="ultievt_hidden" value="add"/>
-			<?php eventForm('', '', '', 0, 0); ?> <br/>
+			<?php eventForm('', '', '', 0, 0, 0); ?> <br/>
 			<input class="button-primary" type="submit" value="Submit Event" />
 		<?php } elseif ($_GET['action'] == "edit") { ?>
 			<h3> Editing Event </h3> 
@@ -109,7 +123,7 @@ $events = $wpdb->get_results("SELECT * FROM $eventsTable WHERE DATE(event_date) 
 			<?php
 				$id = $_GET['event'];
 				$event = $wpdb->get_row("SELECT * FROM $eventsTable WHERE event_id=$id");
-				eventForm($event->event_name, $event->event_date, $event->event_location, $event->event_private, $event->event_link); 
+				eventForm($event->event_name, $event->event_date, $event->event_location, $event->event_private, $event->event_link, $event->event_cancel); 
 			?> <br/>
 			<input class="button-primary" type="submit" value="Update Event" />
 		<?php } elseif ($_GET['action'] == "copy") { ?>
@@ -118,7 +132,7 @@ $events = $wpdb->get_results("SELECT * FROM $eventsTable WHERE DATE(event_date) 
 			<?php
 				$id = $_GET['event'];
 				$event = $wpdb->get_row("SELECT * FROM $eventsTable WHERE event_id=$id");
-				eventForm($event->event_name, $event->event_date, $event->event_location, $event->event_private, $event->event_link); 
+				eventForm($event->event_name, $event->event_date, $event->event_location, $event->event_private, $event->event_link, $event->event_cancel);
 			?> <br/>
 			<input class="button-primary" type="submit" value="Submit Event" />
 		<?php } ?> 
@@ -126,7 +140,7 @@ $events = $wpdb->get_results("SELECT * FROM $eventsTable WHERE DATE(event_date) 
 	<?php } ?>
 </div>
 
-<?php function eventForm($name, $date, $location, $private, $link) { 
+<?php function eventForm($name, $date, $location, $private, $link, $cancel) { 
 	$dd = date_create($date);
 	$day = date_format($dd, 'd');
 	$month = date_format($dd, 'm');
@@ -163,6 +177,10 @@ $events = $wpdb->get_results("SELECT * FROM $eventsTable WHERE DATE(event_date) 
 		<tr>
 			<td style="height:40px"><label for="ultievt_evtprivate">Private Event:</label></td>
 			<td style="height:40px"><input id="ultievt_evtprivate" type="checkbox" name="ultievt_evtprivate" value="yes" <?php if($private) { ?> checked="yes" <?php } ?>/></td>
+		</tr>
+		<tr>
+			<td style="height:40px"><label for="ultievt_evtcancel">Event Cancelled:</label></td>
+			<td style="height:40px"><input id="ultievt_evtcancel" type="checkbox" name="ultievt_evtcancel" value="yes" <?php if($cancel) { ?> checked="yes" <?php } ?>/></td>
 		</tr>
 	</table>
 <?php } ?>
