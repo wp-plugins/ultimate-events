@@ -31,6 +31,9 @@ include 'ultimateEvents_functions.php';
 /****************** Activation Stuff ******************/
 register_activation_hook(__FILE__,'ultievt_install'); 
 
+/****************** Check for update ******************/
+add_action('plugins_loaded', 'ultievt_install');
+
 /****************** User Stuff ******************/
 function ultievt_display() {
 	return ultievt_shortcode('ultimateEvents_display.php');
