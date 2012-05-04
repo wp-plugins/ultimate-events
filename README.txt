@@ -1,6 +1,6 @@
 === Ultimate Events ===
 Plugin Name: Ultimate Events
-Version: 1.1.0
+Version: 1.2.0
 Contributors: tehsmash
 Author: Sam "Tehsmash" Betts
 Author URI: http://www.code-smash.net

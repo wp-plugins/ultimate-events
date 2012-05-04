@@ -1,10 +1,10 @@
 <?php
 global $version;
-$version = "1.1.0";
+$version = "1.2.0";
 /*
 Plugin Name: Ultimate Events
 Description: A Plugin to manage people attending multiple events
-Version: 1.1.0
+Version: 1.2.0
 Author: Sam "Tehsmash" Betts
 Author URI: http://www.code-smash.net
 License: GPL2
@@ -50,10 +50,15 @@ add_shortcode('ultievt_availability', 'ultievt_availability');
 function ultievt_admin_actions() {
 	$iconURL = plugin_dir_url( __FILE__ ) . 'images/icon16.png';
 	add_menu_page('Ultimate Events', 'Ultimate Events', 'edit_pages', 'ultimate_events_menu', 'ultievt_editor', $iconURL);
+	add_submenu_page('ultimate_events_menu', 'Manage Attendance', 'Manage Attendance', 'edit_pages', 'ultimate_events_manage', 'ultievt_manage');
 }
 
 function ultievt_editor() {
 	include ('ultimateEvents_editor.php');
+}
+
+function ultievt_manage() {
+	include ('ultimateEvents_manage.php');
 }
 
 add_action('admin_menu', 'ultievt_admin_actions');
