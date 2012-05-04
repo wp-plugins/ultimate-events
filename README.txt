@@ -1,6 +1,6 @@
 === Ultimate Events ===
 Plugin Name: Ultimate Events
-Version: 1.2.0
+Version: 1.2.1
 Contributors: tehsmash
 Author: Sam "Tehsmash" Betts
 Author URI: http://www.code-smash.net
@@ -20,8 +20,7 @@ who is not going, and who hasnt even bothered to check ;-).
 
 == Installation == 
 
-Step 1. Upload 'Ultimate Events.zip' through the wordpress plugin 
-		Add New page.
+Step 1. Install the plugin from the wordpress repository.
 	
 Step 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
@@ -49,6 +48,9 @@ To display everyone's availability for various events, use the
 Editing events and also copying the data from events can be done in the 
 Ultimate Events menu page inside the wordpress admin section.
 
+Managing other users attendance can be done by the events admin via the 
+'Manage Attendance' page included with the plugins backend.
+
 == License == 
 
 Copyright 2012  Sam "Tehsmash" Betts  (email : sam@code-smash.net)
@@ -67,6 +69,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
 
 == Changelog == 
+> 1.2.1
+	- Added Manage Attendance page on the admin menu.
+	- Added functionaity for admins to manage all users attendance to certain events.
+
 > 1.1.0
 	- Changed position of update button relative to the display table to make it easier to see.
 	- Added cancelation notice to events, accessable via the edit event button. 
