@@ -39,7 +39,7 @@
 						<th>Event Name</th>
 						<th>Event Location</th>
 						<?php foreach($users as $user) { ?>
-							<th style="writing-mode: tb-rl;">
+							<th>
 								<?php echo $user->display_name ?>
 							</th>
 						<?php } ?>
