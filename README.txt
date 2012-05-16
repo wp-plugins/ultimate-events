@@ -1,6 +1,6 @@
 === Ultimate Events ===
 Plugin Name: Ultimate Events
-Version: 1.2.2
+Version: 1.2.3
 Contributors: tehsmash
 Author: Sam "Tehsmash" Betts
 Author URI: http://www.code-smash.net
@@ -69,6 +69,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
 
 == Changelog == 
+> 1.2.3
+	- Added date to availabilty page 
+
 > 1.2.2
 	- Bug fixed, sideways text broken in most browsers, so removed and scroll bars added.
 

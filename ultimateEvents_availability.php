@@ -13,6 +13,7 @@
 			<tr>
 				<th>Event Name</th>
 				<th>Event Location</th>
+				<th> Event Date </th>
 				<?php foreach($users as $user) { ?>
 					<th style="writing-mode: tb-rl;">
 						<?php echo $user->display_name ?>
@@ -30,6 +31,13 @@
 						<?php } else { ?>
 							<?php echo $event->event_location ?>
 						<?php } ?> 
+					</td>
+					<td> 
+						<?php if($event->event_cancel) { 
+							echo "Cancelled";
+						} else { 
+							echo date_format(date_create($event->event_date), 'l d/m/y H:i');
+						} ?> 
 					</td>
 					<?php foreach($users as $user) { ?>
 						<td style="text-align: center;">
