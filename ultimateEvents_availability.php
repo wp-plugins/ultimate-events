@@ -12,7 +12,6 @@
 		<thead>
 			<tr>
 				<th>Event Name</th>
-				<th>Event Location</th>
 				<th> Event Date </th>
 				<?php foreach($users as $user) { ?>
 					<th style="writing-mode: tb-rl;">
@@ -25,13 +24,6 @@
 			<?php foreach($events as $event) { ?>
 				<tr>
 					<td><?php echo $event->event_name ?></td>
-					<td> 
-						<?php if($event->event_link) { ?>
-							<a href="<?php echo $event->event_location ?>"> Link to Location </a>
-						<?php } else { ?>
-							<?php echo $event->event_location ?>
-						<?php } ?> 
-					</td>
 					<td> 
 						<?php if($event->event_cancel) { 
 							echo "Cancelled";
