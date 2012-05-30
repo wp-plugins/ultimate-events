@@ -1,6 +1,6 @@
 === Ultimate Events ===
 Plugin Name: Ultimate Events
-Version: 1.2.4
+Version: 1.3.3
 Contributors: tehsmash
 Author: Sam "Tehsmash" Betts
 Author URI: http://www.code-smash.net
@@ -69,6 +69,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
 
 == Changelog == 
+> 1.3.3
+	- Event attendance statuses moved into a separate table to allow for expansion on defaults.
+	- Beginning to implement a new settings menu to allow administrators to add/remove statuses.
+
 > 1.2.4
 	- Removed location from event availability page to allow for increased table space.
 	

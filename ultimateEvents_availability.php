@@ -3,6 +3,7 @@
 	
 	$eventsTable = $wpdb->prefix . "ultievt_events";
 	$attendanceTable = $wpdb->prefix . "ultievt_attendance";
+	$statusTable = $wpdb->prefix . "ultievt_status";
 	
 	$events = $wpdb->get_results("SELECT * FROM $eventsTable WHERE DATE(event_date) >= DATE(NOW()) ORDER BY event_date");
 	$users = $wpdb->get_results("SELECT * FROM $wpdb->users");
@@ -35,12 +36,9 @@
 						<td style="text-align: center;">
 							<?php  
 								$attend = $wpdb->get_row("SELECT * FROM $attendanceTable WHERE user_id = '$user->ID' AND event_id ='$event->event_id'");
-								if($attend->attendance === "0") {
-									echo '?';
-								} elseif($attend->attendance === "1") {
-									echo 'Y';
-								} elseif($attend->attendance === "2") {
-									echo 'N';
+								$status = $wpdb->get_row("SELECT * FROM $statusTable WHERE status_id='$attend->attendance'");
+								if($status) {
+									echo $status->status_shorthand;
 								} else {
 									echo '-';
 								}

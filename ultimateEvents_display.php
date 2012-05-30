@@ -9,6 +9,7 @@ if($loggedin) {
 
 $eventsTable = $wpdb->prefix . "ultievt_events";
 $attendanceTable = $wpdb->prefix . "ultievt_attendance";
+$statusTable = $wpdb->prefix . "ultievt_status";
 $events = $wpdb->get_results("SELECT * FROM $eventsTable WHERE DATE(event_date) >= DATE(NOW()) ORDER BY event_date");
 
 if($_POST['ultievt_hidden'] == 'Y') {
@@ -67,13 +68,13 @@ if($_POST['ultievt_hidden'] == 'Y') {
 						</td>
 						<?php if($loggedin && !($event->event_cancel)) { 
 							$event_id = $event->event_id;
-							$attend = $wpdb->get_row("SELECT * FROM $attendanceTable WHERE user_id = $user_ID AND event_id = $event_id"); ?> 
+							$attend = $wpdb->get_row("SELECT * FROM $attendanceTable WHERE user_id = $user_ID AND event_id = $event_id");  
+							$statuses = $wpdb->get_results("SELECT * FROM $statusTable"); ?>
 							<td> 
 								<select name="attendance_<?php echo $event->event_id ?>"> 
-									<option value="-1"> ---- </option>
-									<option value="0" <?php if($attend->attendance === "0") {?> selected="yes" <?php } ?> >Don't Know</option> 
-									<option value="1" <?php if($attend->attendance === "1") {?> selected="yes" <?php } ?> >Going</option> 
-									<option value="2" <?php if($attend->attendance === "2") {?> selected="yes" <?php } ?> >Not Going</option> 
+									<?php foreach($statuses as $status) { ?> 
+										<option value="<?php echo $status->status_id; ?>" <?php if($attend->attendance == $status->status_id) { ?> selected="yes" <?php } ?> ><?php echo $status->status_name; ?></option>
+									<?php } ?>
 								</select> 
 							</td> 
 						<?php } ?> 	

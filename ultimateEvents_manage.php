@@ -5,6 +5,7 @@
 	
 	$eventsTable = $wpdb->prefix . "ultievt_events";
 	$attendanceTable = $wpdb->prefix . "ultievt_attendance";
+	$statusTable = $wpdb->prefix . "ultievt_status";
 	
 	$events = $wpdb->get_results("SELECT * FROM $eventsTable WHERE DATE(event_date) >= DATE(NOW()) ORDER BY event_date");
 	$users = $wpdb->get_results("SELECT * FROM $wpdb->users");
@@ -60,12 +61,12 @@
 								<td>
 									<?php  
 										$attend = $wpdb->get_row("SELECT * FROM $attendanceTable WHERE user_id = '$user->ID' AND event_id ='$event->event_id'");
+										$statuses = $wpdb->get_results("SELECT * FROM $statusTable"); 
 									?>
 									<select name="attendance_<?php echo $event->event_id ?>_<?php echo $user->ID ?>"> 
-										<option value="-1">-</option>
-										<option value="0" <?php if($attend->attendance === "0") {?> selected="yes" <?php } ?> >?</option> 
-										<option value="1" <?php if($attend->attendance === "1") {?> selected="yes" <?php } ?> >Y</option> 
-										<option value="2" <?php if($attend->attendance === "2") {?> selected="yes" <?php } ?> >N</option> 
+										<?php foreach($statuses as $status) { ?> 
+											<option value="<?php echo $status->status_id; ?>" <?php if($attend->attendance == $status->status_id) { ?> selected="yes" <?php } ?> ><?php echo $status->status_shorthand; ?></option>
+										<?php } ?>
 									</select> 
 								</td>
 							<?php } ?>
